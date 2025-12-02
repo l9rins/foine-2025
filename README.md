@@ -115,35 +115,53 @@ foine-2025/
 
 ## 🔧 Configuration
 
-### Database Configuration
+### Database Setup (Supabase)
 
-**For Development (H2 - Default):**
-```properties
-# src/main/resources/application.properties
-spring.datasource.url=jdbc:h2:mem:foine_db
-spring.datasource.driverClassName=org.h2.Driver
-spring.jpa.hibernate.ddl-auto=create-drop
-```
+1. **Create a Supabase Project**:
+   - Go to [supabase.com](https://supabase.com) and create a free account
+   - Create a new project
+   - Wait for the database to be provisioned
 
-**For Production (PostgreSQL/Supabase):**
-```properties
-spring.datasource.url=jdbc:postgresql://YOUR_HOST:5432/YOUR_DB
-spring.datasource.username=YOUR_USERNAME
-spring.datasource.password=YOUR_PASSWORD
-spring.jpa.hibernate.ddl-auto=update
-```
+2. **Get Database Credentials**:
+   - Go to Project Settings → Database → Connection String
+   - Copy the JDBC connection string
+   - Note your database password
 
-### Cloudinary Configuration
-```properties
-cloudinary.cloud_name=YOUR_CLOUD_NAME
-cloudinary.api_key=YOUR_API_KEY
-cloudinary.api_secret=YOUR_API_SECRET
-```
+3. **Configure Application**:
+   ```bash
+   # Copy the example configuration
+   cp src/main/resources/application-example.properties src/main/resources/application.properties
 
-### JWT Configuration
-```properties
-jwt.secret=YOUR_JWT_SECRET_KEY
-jwt.expiration-ms=86400000
+   # Edit application.properties with your Supabase credentials
+   # Replace YOUR_PROJECT_REF.supabase.co, YOUR_DATABASE_PASSWORD
+   ```
+
+### Cloudinary Setup (Image Storage)
+
+1. **Create Cloudinary Account**:
+   - Go to [cloudinary.com](https://cloudinary.com) and sign up for free
+   - Verify your account
+
+2. **Get API Credentials**:
+   - Go to Dashboard → Account Details
+   - Copy Cloud Name, API Key, and API Secret
+
+3. **Configure Application**:
+   - Update `application.properties` with your Cloudinary credentials
+   - The app will automatically upload images to Cloudinary
+
+### Environment Variables (Alternative)
+
+You can also use environment variables instead of hardcoding credentials:
+
+```bash
+export SPRING_DATASOURCE_URL="jdbc:postgresql://your-project.supabase.co:5432/postgres"
+export SPRING_DATASOURCE_USERNAME="postgres"
+export SPRING_DATASOURCE_PASSWORD="your-password"
+export CLOUDINARY_CLOUD_NAME="your-cloud-name"
+export CLOUDINARY_API_KEY="your-api-key"
+export CLOUDINARY_API_SECRET="your-api-secret"
+export JWT_SECRET="your-jwt-secret"
 ```
 
 ## 🛠️ API Endpoints
