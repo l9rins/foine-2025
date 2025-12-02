@@ -57,6 +57,7 @@ export default function App() {
             
             <Feed posts={posts} setPosts={setPosts} />
         </main>
+        </div>
     </div>
   )
 }
