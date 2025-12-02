@@ -17,28 +17,36 @@ export default function PinCard({ post }) {
   }
 
   return (
-    <div className="glass-panel mb-4 break-inside-avoid">
-      <img src={post.imageUrl} alt={post.title} className="w-full h-48 object-cover rounded-lg mb-2" />
-      <h3 className="text-lg font-semibold">{post.title}</h3>
-      <p className="text-sm text-gray-300 mb-2">{post.description}</p>
-      <div className="flex items-center justify-between">
-        <button
-          onClick={handleLike}
-          className={`px-3 py-1 rounded-md text-sm transition-colors ${
-            liked ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-600 hover:bg-gray-700'
-          }`}
-        >
-          ❤️ {likes}
-        </button>
-        {post.tags && post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1">
-            {post.tags.map(tag => (
-              <span key={tag.id} className="text-xs bg-blue-600 px-2 py-1 rounded">
-                {tag.name}
-              </span>
-            ))}
-          </div>
-        )}
+    <div className="group relative mb-4 break-inside-avoid rounded-2xl overflow-hidden cursor-zoom-in transition-transform duration-300 hover:rotate-x-2 hover:scale-102">
+      {/* Image with Zoom Effect */}
+      <img 
+        src={post.imageUrl} 
+        alt={post.title} 
+        className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-110 border border-gray-700/30" 
+      />
+      
+      {/* Dark Gradient Overlay (Only visible on hover) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+        
+        <h3 className="text-white font-bold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            {post.title}
+        </h3>
+        
+        <div className="flex justify-between items-center mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+          <p className="text-gray-300 text-xs line-clamp-1">{post.description}</p>
+          
+          <button
+            onClick={(e) => {
+                e.stopPropagation(); // Prevent card click
+                handleLike();
+            }}
+            className={`p-2 rounded-full backdrop-blur-md transition-colors ${
+              liked ? 'bg-red-500/90 text-white' : 'bg-white/20 text-white hover:bg-white/40'
+            }`}
+          >
+            {liked ? '❤️' : '🤍'} {likes}
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -20,9 +20,7 @@ export default function UploadForm({ onPostCreated }) {
         formData.tags.split(',').forEach(tag => data.append('tags', tag.trim()))
       }
 
-      const res = await api.post('/posts', data, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      })
+      const res = await api.post('/posts', data)
       onPostCreated(res.data)
       setFormData({ title: '', description: '', tags: '' })
       setFile(null)
@@ -38,7 +36,7 @@ export default function UploadForm({ onPostCreated }) {
   }
 
   return (
-    <div className="glass-panel max-w-md mx-auto mb-6">
+    <div className="space-y-4">
       <h3 className="text-xl font-bold mb-4">Create New Post</h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
