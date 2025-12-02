@@ -4,6 +4,7 @@ import UploadForm from './components/UploadForm'
 import Feed from './pages/Feed'
 import Navbar from './components/Navbar'
 import Modal from './components/Modal'
+import SplashPage from './SplashPage'
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -28,22 +29,7 @@ export default function App() {
   }
 
   if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-6 relative overflow-hidden">
-        {/* Background Gradients (Same as authenticated view) */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
-        
-        {/* Login Form Container */}
-        <div className="relative z-10 w-full max-w-md">
-          <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 font-['Playfair_Display'] mb-2">Foiné</h1>
-              <p className="text-gray-400">Discover your next inspiration.</p>
-          </div>
-          <AuthForm onAuth={handleAuth} />
-        </div>
-      </div>
-    )
+    return <SplashPage onAuth={handleAuth} />
   }
 
   return (

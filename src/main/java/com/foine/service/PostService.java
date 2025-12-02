@@ -52,7 +52,7 @@ public class PostService {
                 Tag tag = tagRepository.findByName(t).orElseGet(() -> {
                     Tag nt = new Tag();
                     nt.setName(t);
-                    return nt;
+                    return tagRepository.save(nt);
                 });
                 tags.add(tag);
             }
