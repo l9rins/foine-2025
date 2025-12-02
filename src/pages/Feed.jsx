@@ -6,25 +6,17 @@ import SkeletonPin from '../components/SkeletonPin'
 export default function Feed({ posts, setPosts }) {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    // Only fetch if we don't have posts yet
-    if (posts.length === 0) {
-      setLoading(true)
-      api.get('/posts')
-        .then(res => {
-            setPosts(res.data)
-            setLoading(false)
-        })
-        .catch(err => {
-            console.error(err)
-            setLoading(false)
-        })
-    } else {
-        setLoading(false)
-    }
-  }, [posts.length, setPosts])
+    setLoading(true);
+    api.get('/posts')
+      .then(res => {
+        setPosts(res.data);
+      })
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
+    <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 p-4 mx-auto max-w-7xl">
       {/* Show Skeletons while loading */}
       {loading && (
         <>

@@ -34,11 +34,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-purple-500/30">
-        {/* The Radial Gradient Background Effect */}
-        <div className="fixed inset-0 pointer-events-none">
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px]" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px]" />
-        </div>
+        <div className="relative z-10">
 
         {/* Floating Navbar */}
         <Navbar 
@@ -56,7 +52,7 @@ export default function App() {
         </Modal>
 
         {/* Main Content - Now cleaner! */}
-        <main className="relative z-10 max-w-7xl mx-auto px-4 pt-32 pb-10">
+        <main className="relative z-10 max-w-7xl mx-auto px-4 pt-24 pb-10">
             {/* UploadForm is GONE from here */}
             
             <Feed posts={posts} setPosts={setPosts} />
