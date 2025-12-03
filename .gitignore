@@ -38,3 +38,5 @@ logs/
 # Application properties with sensitive data
 src/main/resources/application-prod.properties
 src/main/resources/application-local.properties
+.vercel
+.env*.local
