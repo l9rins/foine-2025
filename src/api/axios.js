@@ -4,6 +4,8 @@ const api = axios.create({
   baseURL: 'https://foine-production-725d.up.railway.app/api'
 })
 
+api.defaults.withCredentials = true
+
 // Request interceptor to add JWT token
 api.interceptors.request.use(
   (config) => {
