@@ -76,6 +76,7 @@ public class SecurityConfig {
         // 1. Allow localhost AND any Vercel URL (including previews)
         configuration.setAllowedOriginPatterns(List.of(
             "http://localhost:4029", 
+            "https://foine-nine.vercel.app",  // Temporary for testing
             "https://**.vercel.app" 
         ));
 
