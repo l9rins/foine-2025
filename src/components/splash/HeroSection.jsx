@@ -39,7 +39,7 @@ export default function HeroSection() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 font-['Playfair_Display']"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 font-['Lexend']"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-purple-100">
             Discover.
@@ -68,15 +68,15 @@ export default function HeroSection() {
           className="flex flex-wrap justify-center gap-8 mb-12 text-sm md:text-base"
         >
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-white font-['Playfair_Display']">50k+</div>
+            <div className="text-2xl md:text-3xl font-bold text-white font-['Lexend']">50k+</div>
             <div className="text-gray-400">Creators</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-white font-['Playfair_Display']">200k+</div>
+            <div className="text-2xl md:text-3xl font-bold text-white font-['Lexend']">200k+</div>
             <div className="text-gray-400">Pins Shared</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-white font-['Playfair_Display']">120k+</div>
+            <div className="text-2xl md:text-3xl font-bold text-white font-['Lexend']">120k+</div>
             <div className="text-gray-400">Daily Active</div>
           </div>
         </motion.div>

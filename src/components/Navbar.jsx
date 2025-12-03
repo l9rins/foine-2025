@@ -10,7 +10,7 @@ export default function Navbar({ onLogout, onOpenUpload }) {
           <div className="w-8 h-8 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg">
             F
           </div>
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 font-['Playfair_Display']">
+          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 font-['Lexend']">
             Foiné
           </span>
         </div>

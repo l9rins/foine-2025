@@ -29,7 +29,7 @@ export default function Navigation({ onAuth }) {
             <div className="w-8 h-8 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg">
               F
             </div>
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 font-['Playfair_Display']">
+            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 font-['Lexend']">
               Foiné
             </span>
           </div>
@@ -126,7 +126,7 @@ export default function Navigation({ onAuth }) {
           >
             <div className="glass-panel border-white/20 shadow-2xl relative overflow-hidden p-8">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-white font-['Playfair_Display'] mb-2">Welcome to Foiné</h3>
+                <h3 className="text-2xl font-bold text-white font-['Lexend'] mb-2">Welcome to Foiné</h3>
                 <p className="text-gray-400">Join our creative community</p>
               </div>
               <AuthForm onAuth={() => { onAuth(); setShowAuthModal(false); }} />

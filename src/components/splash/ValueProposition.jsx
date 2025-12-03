@@ -43,7 +43,7 @@ export default function ValueProposition() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display'] text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Lexend'] text-white">
             Why Choose Foiné?
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -72,7 +72,7 @@ export default function ValueProposition() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-['Playfair_Display'] text-white">
+              <h3 className="text-2xl font-bold mb-4 font-['Lexend'] text-white">
                 {card.title}
               </h3>
               <p className="text-gray-300 leading-relaxed">

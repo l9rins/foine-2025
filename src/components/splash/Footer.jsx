@@ -43,7 +43,7 @@ export default function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold font-['Playfair_Display'] text-white mb-4">
+              <h3 className="text-2xl font-bold font-['Lexend'] text-white mb-4">
                 Foiné
               </h3>
               <p className="text-gray-400 mb-6 max-w-sm">

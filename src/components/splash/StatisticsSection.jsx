@@ -61,7 +61,7 @@ export default function StatisticsSection() {
           viewport={{ once: true, onViewportEnter: () => setHasAnimated(true) }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display'] text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Lexend'] text-white">
             Trusted by Creators Worldwide
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -84,7 +84,7 @@ export default function StatisticsSection() {
               viewport={{ once: true }}
               className="glass-panel p-8 text-center"
             >
-              <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 font-['Playfair_Display'] bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+              <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 font-['Lexend'] bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
                 {stat.isFloat ? counts[stat.key].toFixed(1) : counts[stat.key].toLocaleString()}{stat.suffix}
               </div>
               <div className="text-gray-300 font-medium">
