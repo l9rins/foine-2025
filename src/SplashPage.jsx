@@ -3,6 +3,9 @@ import Navigation from './components/splash/Navigation'
 import HeroSection from './components/splash/HeroSection'
 import ValueProposition from './components/splash/ValueProposition'
 import StatisticsSection from './components/splash/StatisticsSection'
+import FeaturesShowcase from './components/splash/FeaturesShowcase'
+import TestimonialsSection from './components/splash/TestimonialsSection'
+import Footer from './components/splash/Footer'
 
 export default function SplashPage({ onAuth }) {
   return (
@@ -12,9 +15,11 @@ export default function SplashPage({ onAuth }) {
         <HeroSection />
         <ValueProposition />
         <StatisticsSection />
+        <FeaturesShowcase />
+        <TestimonialsSection />
         {/* Additional sections can be added here */}
       </main>
-      {/* Footer can be added here */}
+      <Footer />
     </div>
   )
 }

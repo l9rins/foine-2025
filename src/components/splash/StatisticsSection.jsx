@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 export default function StatisticsSection() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0
-  })
+  const [hasAnimated, setHasAnimated] = useState(false)
 
   const [counts, setCounts] = useState({
     creators: 0,
@@ -22,7 +19,7 @@ export default function StatisticsSection() {
   ]
 
   useEffect(() => {
-    if (inView) {
+    if (hasAnimated) {
       const duration = 2000 // 2 seconds
       const steps = 60
       const interval = duration / steps
@@ -52,16 +49,16 @@ export default function StatisticsSection() {
 
       return () => clearInterval(timer)
     }
-  }, [inView])
+  }, [hasAnimated])
 
   return (
     <section className="py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true, onViewportEnter: () => setHasAnimated(true) }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display'] text-white">
@@ -77,13 +74,14 @@ export default function StatisticsSection() {
             <motion.div
               key={stat.key}
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{
                 delay: index * 0.1,
                 duration: 0.6,
                 type: 'spring',
                 stiffness: 100
               }}
+              viewport={{ once: true }}
               className="glass-panel p-8 text-center"
             >
               <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 font-['Playfair_Display'] bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
@@ -99,8 +97,9 @@ export default function StatisticsSection() {
         {/* Additional visual element */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          whileInView={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
+          viewport={{ once: true }}
           className="mt-16 text-center"
         >
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">

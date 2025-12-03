@@ -1,25 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
 
 export default function ValueProposition() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0
-  })
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.2,
-        duration: 0.6,
-        ease: 'easeOut'
-      }
-    })
-  }
 
   const cards = [
     {
@@ -55,10 +37,10 @@ export default function ValueProposition() {
     <section id="features" className="py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display'] text-white">
@@ -73,10 +55,10 @@ export default function ValueProposition() {
           {cards.map((card, index) => (
             <motion.div
               key={index}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
               whileHover={{
                 y: -8,
                 transition: { duration: 0.2 }
