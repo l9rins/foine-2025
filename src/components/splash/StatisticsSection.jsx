@@ -12,9 +12,9 @@ export default function StatisticsSection() {
   })
 
   const stats = [
-    { key: 'creators', target: 50000, label: 'Creative Professionals', suffix: 'k+' },
-    { key: 'pins', target: 200000, label: 'Pins Shared', suffix: 'k+' },
-    { key: 'users', target: 120000, label: 'Daily Active Users', suffix: 'k+' },
+    { key: 'creators', target: 2500000, label: 'Creative Professionals', suffix: 'M+' },
+    { key: 'pins', target: 10000000, label: 'Pins Shared', suffix: 'M+' },
+    { key: 'users', target: 5000000, label: 'Daily Active Users', suffix: 'M+' },
     { key: 'rating', target: 4.9, label: 'Platform Rating', suffix: '/5', isFloat: true }
   ]
 
@@ -30,18 +30,18 @@ export default function StatisticsSection() {
         const progress = step / steps
 
         setCounts({
-          creators: Math.floor(50000 * progress),
-          pins: Math.floor(200000 * progress),
-          users: Math.floor(120000 * progress),
-          rating: parseFloat((4.0 + 0.9 * progress).toFixed(1))
+          creators: Math.floor(2500000 * progress),
+          pins: Math.floor(10000000 * progress),
+          users: Math.floor(5000000 * progress),
+          rating: 4.9
         })
 
         if (step >= steps) {
           clearInterval(timer)
           setCounts({
-            creators: 50000,
-            pins: 200000,
-            users: 120000,
+            creators: 2500000,
+            pins: 10000000,
+            users: 5000000,
             rating: 4.9
           })
         }

@@ -85,8 +85,8 @@ export default function FeaturesShowcase() {
                 </p>
               </div>
               <div className="flex-1">
-                <div className="glass-panel p-8 h-64 flex items-center justify-center">
-                  <div className="text-6xl opacity-20">
+                <div className="glass-panel p-8 h-64 flex items-center justify-center bg-gradient-to-br from-blue-500/10 to-purple-500/10">
+                  <div className="text-6xl opacity-60 text-blue-400">
                     {feature.icon}
                   </div>
                 </div>
