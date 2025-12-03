@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
                     // Allow origins for development and production
-                    config.setAllowedOrigins(List.of("http://localhost:2049", "http://localhost:4029", "https://foine-fyt15eg5z-l9rins-projects.vercel.app", "https://foine-22y4lm164-l9rins-projects.vercel.app"));
+                    config.setAllowedOriginPatterns("http://localhost:2049", "http://localhost:4029", "https://*.vercel.app");
                     config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
                     config.setAllowedHeaders(List.of("*"));
                     config.setAllowCredentials(true);
