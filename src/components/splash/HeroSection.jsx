@@ -45,7 +45,7 @@ export default function HeroSection() {
             Discover.
           </span>
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
             Share.
           </span>
           <br />

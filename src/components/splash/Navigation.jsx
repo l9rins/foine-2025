@@ -52,7 +52,7 @@ export default function Navigation({ onAuth }) {
             <div className="flex items-center gap-3">
               <button 
                 onClick={() => setShowAuthModal(true)}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 px-4 py-2"
+                className="text-sm font-medium text-gray-200 hover:text-white transition-colors duration-300 px-4 py-2"
               >
                 Sign In
               </button>
@@ -99,7 +99,7 @@ export default function Navigation({ onAuth }) {
             <div className="flex flex-col gap-3 mt-6 pt-4 border-t border-white/10">
               <button 
                 onClick={() => { setShowAuthModal(true); setIsMobileMenuOpen(false); }}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 text-left"
+                className="text-sm font-medium text-gray-200 hover:text-white transition-colors duration-300 text-left"
               >
                 Sign In
               </button>

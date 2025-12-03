@@ -59,29 +59,38 @@ export default function FeaturesShowcase() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="space-y-20">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="glass-panel p-6 text-center group"
+              className={`flex items-center gap-12 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
             >
-              <div className="mb-4 flex justify-center">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 group-hover:from-purple-500/30 group-hover:to-pink-500/30 transition-all duration-300">
-                  <div className="text-purple-400 group-hover:text-purple-300 transition-colors duration-300">
+              <div className="flex-1">
+                <div className="mb-6 flex justify-center">
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20">
+                    <div className="text-purple-400">
+                      {feature.icon}
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-3xl font-bold mb-4 font-['Playfair_Display'] text-white text-center">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed text-center max-w-md mx-auto">
+                  {feature.description}
+                </p>
+              </div>
+              <div className="flex-1">
+                <div className="glass-panel p-8 h-64 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">
                     {feature.icon}
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold mb-3 font-['Playfair_Display'] text-white">
-                {feature.title}
-              </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                {feature.description}
-              </p>
             </motion.div>
           ))}
         </div>

@@ -33,7 +33,7 @@ export default function StatisticsSection() {
           creators: Math.floor(50000 * progress),
           pins: Math.floor(200000 * progress),
           users: Math.floor(120000 * progress),
-          rating: parseFloat((4.9 * progress).toFixed(1))
+          rating: parseFloat((4.0 + 0.9 * progress).toFixed(1))
         })
 
         if (step >= steps) {
