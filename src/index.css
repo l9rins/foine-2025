@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Geist:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=PT+Root+UI:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -51,7 +51,7 @@
 }
 
 body { 
-  font-family: 'Geist', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; 
+  font-family: 'PT Root UI', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; 
   background: #0a0a0a;
 }
 
