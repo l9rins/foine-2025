@@ -72,11 +72,19 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         
-        // The Fix: Use setAllowedOriginPatterns instead of setAllowedOrigins
-        configuration.setAllowedOriginPatterns(List.of("http://localhost:2049", "http://localhost:4029", "https://*.vercel.app")); 
+        // 1. Allow localhost AND any Vercel URL (including previews)
+        configuration.setAllowedOriginPatterns(List.of(
+            "http://localhost:4029", 
+            "https://*.vercel.app" 
+        ));
+
+        // 2. Allow all standard methods
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With"));
+        // 3. Allow all standard headers
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With", "Accept"));
+        
+        // 4. Allow credentials (cookies/auth headers)
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
