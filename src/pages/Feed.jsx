@@ -44,7 +44,7 @@ export default function Feed({ posts, setPosts, searchTerm, selectedTag }) {
     const tags = new Set()
     posts.forEach(post => {
       if (post.tags) {
-        post.tags.forEach(tag => tags.add(tag))
+        post.tags.forEach(tag => tags.add(tag.name))
       }
     })
     return Array.from(tags).sort()
@@ -58,7 +58,7 @@ export default function Feed({ posts, setPosts, searchTerm, selectedTag }) {
         post.description.toLowerCase().includes(searchTerm.toLowerCase())
 
       const matchesTag = selectedTag === '' ||
-        (post.tags && post.tags.includes(selectedTag))
+        (post.tags && post.tags.some(tag => tag.name === selectedTag))
 
       return matchesSearch && matchesTag
     })

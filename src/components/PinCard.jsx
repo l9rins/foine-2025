@@ -80,8 +80,8 @@ export default function PinCard({ post }) {
         {post.tags && post.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
             {post.tags.slice(0, 3).map(tag => (
-              <span key={tag} className="px-2 py-1 text-xs bg-white/20 backdrop-blur-sm rounded-full text-white">
-                #{tag}
+              <span key={tag.id} className="px-2 py-1 text-xs bg-white/20 backdrop-blur-sm rounded-full text-white">
+                #{tag.name}
               </span>
             ))}
             {post.tags.length > 3 && (
