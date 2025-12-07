@@ -2,18 +2,9 @@ import React, { useEffect, useState, useMemo } from 'react'
 import api from '../api/axios'
 import PinCard from '../components/PinCard'
 import SkeletonPin from '../components/SkeletonPin'
-import Masonry from 'react-masonry-css'
 
 export default function Feed({ posts, setPosts, searchTerm, selectedTag, onPostClick }) {
   const [loading, setLoading] = useState(true)
-
-  // Masonry breakpoint columns
-  const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1
-  }
 
   useEffect(() => {
     setLoading(true);
@@ -91,16 +82,12 @@ export default function Feed({ posts, setPosts, searchTerm, selectedTag, onPostC
         </div>
       )}
 
-      {/* Posts Masonry Grid */}
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="flex -ml-4 w-auto"
-        columnClassName="pl-4 bg-clip-padding"
-      >
+      {/* Posts Grid - Pinterest-style columns */}
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
         {/* Show Skeletons while loading */}
         {loading && (
           <>
-              {[...Array(8)].map((_, i) => (
+              {[...Array(12)].map((_, i) => (
                   <SkeletonPin key={i} />
               ))}
           </>
@@ -110,7 +97,38 @@ export default function Feed({ posts, setPosts, searchTerm, selectedTag, onPostC
         {!loading && filteredPosts.map(post => (
           <PinCard key={post.id} post={post} onClick={() => onPostClick(post)} />
         ))}
-      </Masonry>
+
+        {/* Enhanced Empty State */}
+        {!loading && filteredPosts.length === 0 && (
+          <div className="col-span-full flex flex-col items-center justify-center text-gray-400 py-20 text-center">
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-12 h-12 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2 font-['Lexend']">
+              {searchTerm || selectedTag ? 'No matches found' : 'No inspiration yet'}
+            </h3>
+            <p className="text-lg mb-6 max-w-md">
+              {searchTerm || selectedTag
+                ? 'Try adjusting your search terms or filters to find what you\'re looking for.'
+                : 'Be the first to share your creative vision with the world!'
+              }
+            </p>
+            {!searchTerm && !selectedTag && (
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="btn-primary flex items-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Create First Post
+              </button>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
