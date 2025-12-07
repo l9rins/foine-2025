@@ -3,17 +3,30 @@ import React from 'react'
 export default function PostDetailModal({ post, onClose }) {
   if (!post) return null
 
+  const formatDate = (dateString) => {
+    if (!dateString) return 'Recently'
+    const date = new Date(dateString)
+    const now = new Date()
+    const diffTime = Math.abs(now - date)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+    if (diffDays === 1) return '1 day ago'
+    if (diffDays < 7) return `${diffDays} days ago`
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`
+    return date.toLocaleDateString()
+  }
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
       <div className="relative max-w-4xl w-full max-h-[90vh] bg-gray-900 rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50">
 
         <div className="flex flex-col lg:flex-row h-full max-h-[90vh]">
           {/* Image Section */}
-          <div className="lg:w-2/3 relative bg-black">
+          <div className="lg:w-2/3 relative bg-black flex items-center justify-center min-h-[300px]">
             <img
               src={post.imageUrl}
               alt={post.title}
-              className="w-full h-full object-contain"
+              className="max-w-full max-h-full object-contain"
             />
           </div>
 
@@ -41,15 +54,20 @@ export default function PostDetailModal({ post, onClose }) {
             {/* Content */}
             <div className="flex-1 px-6 py-6 overflow-y-auto bg-gradient-to-b from-transparent to-black/5">
               {/* Author Section */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-lg">
-                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-lg">
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400">Posted by</p>
+                    <p className="text-white font-medium">@user</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-400">Posted by</p>
-                  <p className="text-white font-medium">@user</p>
+                <div className="text-right">
+                  <p className="text-xs text-gray-500">{formatDate(post.createdAt)}</p>
                 </div>
               </div>
 
@@ -93,13 +111,13 @@ export default function PostDetailModal({ post, onClose }) {
             <div className="px-6 py-4 border-t border-gray-700/50 bg-gray-900/50">
               <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
               <div className="flex gap-3">
-                <button className="flex-1 btn-primary flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
+                <button className="flex-1 btn-primary flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-blue-500/25">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
                   </svg>
                   Share
                 </button>
-                <button className="p-3 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/25 border border-white/10">
+                <button className="p-3 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/25 border border-white/10 hover:border-red-500/30">
                   <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
