@@ -77,6 +77,7 @@ public class SecurityConfig {
         configuration.setAllowedOriginPatterns(List.of(
             "http://localhost:4029", 
             "https://foine-nine.vercel.app",  // Temporary for testing
+            "https://foine-lwlcbzl1n-l9rins-projects.vercel.app",
             "https://**.vercel.app" 
         ));
 
