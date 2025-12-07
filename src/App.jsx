@@ -53,7 +53,7 @@ export default function App() {
             setSearchTerm={setSearchTerm}
             selectedTag={selectedTag}
             setSelectedTag={setSelectedTag}
-            allTags={[...new Set(posts.flatMap(post => post.tags || []))].sort()}
+            allTags={[...new Set(posts.reduce((acc, post) => acc.concat(post.tags || []), []))].sort()}
         />
 
         {/* Modal Wrapper for UploadForm */}
