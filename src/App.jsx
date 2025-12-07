@@ -4,6 +4,7 @@ import UploadForm from './components/UploadForm'
 import Feed from './pages/Feed'
 import Navbar from './components/Navbar'
 import Modal from './components/Modal'
+import PostDetailModal from './components/PostDetailModal'
 import SplashPage from './SplashPage'
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
   const [isUploadOpen, setIsUploadOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedTag, setSelectedTag] = useState('')
+  const [selectedPost, setSelectedPost] = useState(null)
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -69,8 +71,16 @@ export default function App() {
         <main className="relative z-10 max-w-7xl mx-auto px-4 pt-20 pb-10">
             {/* UploadForm is GONE from here */}
 
-            <Feed posts={posts} setPosts={setPosts} searchTerm={searchTerm} selectedTag={selectedTag} />
+            <Feed posts={posts} setPosts={setPosts} searchTerm={searchTerm} selectedTag={selectedTag} onPostClick={setSelectedPost} />
         </main>
+
+        {/* Post Detail Modal */}
+        {selectedPost && (
+          <PostDetailModal
+            post={selectedPost}
+            onClose={() => setSelectedPost(null)}
+          />
+        )}
         </div>
     </div>
   )

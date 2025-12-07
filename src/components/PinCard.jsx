@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import api from '../api/axios'
 
-export default function PinCard({ post }) {
+export default function PinCard({ post, onClick }) {
   const [likes, setLikes] = useState(post.likeCount || 0)
   const [liked, setLiked] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
@@ -37,9 +37,10 @@ export default function PinCard({ post }) {
 
   return (
     <div
-      className="group relative mb-4 break-inside-avoid rounded-2xl overflow-hidden cursor-zoom-in transition-all duration-300 hover:rotate-x-2 hover:scale-102 hover:shadow-2xl hover:shadow-blue-500/10"
+      className="group relative mb-4 break-inside-avoid rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:rotate-x-2 hover:scale-102 hover:shadow-2xl hover:shadow-blue-500/10"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
     >
       {/* Image with Enhanced Zoom Effect */}
       <div className="relative overflow-hidden rounded-2xl">
