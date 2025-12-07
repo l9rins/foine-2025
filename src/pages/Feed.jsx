@@ -10,9 +10,32 @@ export default function Feed({ posts, setPosts, searchTerm, selectedTag }) {
     setLoading(true);
     api.get('/posts')
       .then(res => {
-        setPosts(Array.isArray(res.data) ? res.data : []);
+        console.log('API Response received');
+        console.log('Response data:', res.data);
+        console.log('Is array?', Array.isArray(res.data));
+        
+        let postsData = [];
+        if (Array.isArray(res.data)) {
+          postsData = res.data;
+        } else if (res.data && Array.isArray(res.data.data)) {
+          postsData = res.data.data;
+        } else if (res.data && Array.isArray(res.data.posts)) {
+          postsData = res.data.posts;
+        } else if (res.data && typeof res.data === 'object' && Object.keys(res.data).length > 0) {
+          // If it's an object, try to find an array property
+          const possibleArrays = Object.values(res.data).filter(val => Array.isArray(val));
+          if (possibleArrays.length > 0) {
+            postsData = possibleArrays[0];
+          }
+        }
+        
+        console.log('Final posts data:', postsData);
+        setPosts(postsData);
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error('API Error:', err);
+        setPosts([]);
+      })
       .finally(() => setLoading(false));
   }, []);
 
