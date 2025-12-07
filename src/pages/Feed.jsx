@@ -10,7 +10,7 @@ export default function Feed({ posts, setPosts, searchTerm, selectedTag }) {
     setLoading(true);
     api.get('/posts')
       .then(res => {
-        setPosts(res.data);
+        setPosts(Array.isArray(res.data) ? res.data : []);
       })
       .catch(err => console.error(err))
       .finally(() => setLoading(false));
